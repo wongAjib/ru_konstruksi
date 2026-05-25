@@ -22,13 +22,13 @@ export const metadata: Metadata = {
   },
   description: "Raffi Utama Konstruksi menghadirkan solusi konstruksi modern, inovatif, dan profesional untuk bangunan impian Anda. Melayani jasa kontraktor, renovasi rumah, desain interior, dan konstruksi sipil di Bogor dan sekitarnya.",
   keywords: [
-    "jasa kontraktor", 
-    "renovasi rumah", 
-    "desain interior", 
-    "konstruksi sipil", 
-    "kontraktor Bogor", 
-    "RU Konstruksi", 
-    "bangun rumah", 
+    "jasa kontraktor",
+    "renovasi rumah",
+    "desain interior",
+    "konstruksi sipil",
+    "kontraktor Bogor",
+    "RU Konstruksi",
+    "bangun rumah",
     "kontraktor terpercaya"
   ],
   authors: [{ name: "RU Konstruksi" }],
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   verification: {
-    google: "ISI_TOKEN_DISINI",
+    google: "eGiuZ3PRNNHwvKJmHIG7YR4ZWwGA2lNOICbLrFZfHS4",
   },
 };
 
