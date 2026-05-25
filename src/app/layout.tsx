@@ -74,6 +74,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  verification: {
+    google: "ISI_TOKEN_DISINI",
+  },
 };
 
 export default function RootLayout({
