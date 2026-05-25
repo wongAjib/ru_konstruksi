@@ -15,7 +15,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://ru-konstruksi.vercel.app"),
   title: {
     default: "RU Konstruksi | Membangun Masa Depan",
     template: "%s | RU Konstruksi",
