@@ -6,6 +6,7 @@ import TeamSection from "@/components/TeamSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import PartnerSection from "@/components/PartnerSection";
 import CTASection from "@/components/CTASection";
+import ConsultationForm from "@/components/ConsultationForm";
 import { createClient } from "@/utils/supabase/server";
 
 export default async function Home() {
@@ -32,6 +33,7 @@ export default async function Home() {
       <TestimonialSection testimonials={testimonials || []} />
       <PartnerSection />
       <CTASection />
+      <ConsultationForm />
     </>
   );
 }

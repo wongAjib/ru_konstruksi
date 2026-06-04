@@ -51,7 +51,7 @@ export default function CTASection() {
                 Hubungi Sekarang
               </a>
               <a
-                href="#"
+                href="#consultation-form"
                 className="inline-flex items-center justify-center gap-2 bg-transparent border border-accent/50 text-accent hover:bg-accent/10 px-8 py-4 rounded-full font-medium transition-all text-lg group"
               >
                 Minta Penawaran
