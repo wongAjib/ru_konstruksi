@@ -2,6 +2,7 @@ import { createClient } from '@/utils/supabase/server'
 import { savePortfolio } from '@/app/management/portfolios/actions'
 import ImageUploader from '@/components/management/ImageUploader'
 import AdminForm from '@/components/management/AdminForm'
+import ProjectImageManager from '@/components/management/ProjectImageManager'
 
 export default async function PortfolioFormPage({
   params
@@ -14,7 +15,10 @@ export default async function PortfolioFormPage({
 
   if (!isNew) {
     const supabase = await createClient()
-    const { data } = await supabase.from('portfolios').select('*').eq('id', id).single()
+    const { data } = await supabase.from('portfolios').select(`
+      *,
+      project_images (*)
+    `).eq('id', id).single()
     portfolio = data
   }
 
@@ -79,6 +83,10 @@ export default async function PortfolioFormPage({
           </div>
         </div>
       </AdminForm>
+
+      {!isNew && portfolio && (
+        <ProjectImageManager portfolioId={portfolio.id} initialImages={portfolio.project_images || []} />
+      )}
     </div>
   )
 }

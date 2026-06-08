@@ -27,6 +27,7 @@ const getIcon = (cat: string) => categoryIconMap[cat] ?? "📁";
 export default function GalleryClient({ initialProjects }: { initialProjects: Portfolio[] }) {
   const [activeCategory, setActiveCategory] = useState("Semua");
   const [selectedProject, setSelectedProject] = useState<Portfolio | null>(null);
+  const [activeImage, setActiveImage] = useState<string | null>(null);
 
   // Derivasi kategori secara dinamis dari data yang ada
   const categories = useMemo(() => {
@@ -56,8 +57,10 @@ export default function GalleryClient({ initialProjects }: { initialProjects: Po
     const currentIndex = filteredProjects.findIndex((p) => p.id === selectedProject.id);
     if (direction === "prev" && currentIndex > 0) {
       setSelectedProject(filteredProjects[currentIndex - 1]);
+      setActiveImage(filteredProjects[currentIndex - 1].thumbnail);
     } else if (direction === "next" && currentIndex < filteredProjects.length - 1) {
       setSelectedProject(filteredProjects[currentIndex + 1]);
+      setActiveImage(filteredProjects[currentIndex + 1].thumbnail);
     }
   };
 
@@ -195,7 +198,7 @@ export default function GalleryClient({ initialProjects }: { initialProjects: Po
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  onClick={() => setSelectedProject(project)}
+                  onClick={() => { setSelectedProject(project); setActiveImage(project.thumbnail); }}
                   className="group cursor-pointer"
                 >
                   <div className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-accent/5 hover:border-accent/30 hover:-translate-y-2 transition-all duration-500">
@@ -314,13 +317,13 @@ export default function GalleryClient({ initialProjects }: { initialProjects: Po
 
               <div className="overflow-y-auto">
                 {/* Image */}
-                <div className="relative h-[300px] md:h-[400px]">
+                <div className="relative h-[300px] md:h-[400px] bg-slate-900">
                   <img
-                    src={selectedProject.thumbnail}
+                    src={activeImage || selectedProject.thumbnail}
                     alt={selectedProject.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute bottom-6 left-6 z-10">
                     <span className="bg-white/90 backdrop-blur-sm text-slate-900 px-4 py-2 rounded-full text-sm font-semibold inline-flex items-center gap-2">
                       <span>{getIcon(selectedProject.category)}</span>
@@ -328,6 +331,38 @@ export default function GalleryClient({ initialProjects }: { initialProjects: Po
                     </span>
                   </div>
                 </div>
+
+                {/* Thumbnail Gallery */}
+                {selectedProject.project_images && selectedProject.project_images.length > 0 && (
+                  <div className="px-8 md:px-10 pt-6 flex gap-3 overflow-x-auto pb-2 snap-x hide-scrollbar">
+                    <button
+                      onClick={() => setActiveImage(selectedProject.thumbnail)}
+                      className={`relative w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden shrink-0 snap-start border-2 transition-all ${
+                        (activeImage || selectedProject.thumbnail) === selectedProject.thumbnail
+                          ? 'border-accent shadow-md scale-105'
+                          : 'border-transparent hover:border-slate-300 opacity-70 hover:opacity-100'
+                      }`}
+                    >
+                      <img src={selectedProject.thumbnail} className="w-full h-full object-cover" alt="Thumbnail" />
+                    </button>
+                    
+                    {[...selectedProject.project_images]
+                      .sort((a, b) => a.sort_order - b.sort_order)
+                      .map((img) => (
+                      <button
+                        key={img.id}
+                        onClick={() => setActiveImage(img.image_url)}
+                        className={`relative w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden shrink-0 snap-start border-2 transition-all ${
+                          activeImage === img.image_url
+                            ? 'border-accent shadow-md scale-105'
+                            : 'border-transparent hover:border-slate-300 opacity-70 hover:opacity-100'
+                        }`}
+                      >
+                        <img src={img.image_url} className="w-full h-full object-cover" alt="Gallery photo" />
+                      </button>
+                    ))}
+                  </div>
+                )}
 
                 {/* Details */}
                 <div className="p-8 md:p-10">
@@ -377,7 +412,7 @@ export default function GalleryClient({ initialProjects }: { initialProjects: Po
                   {/* CTA */}
                   <div className="mt-8 flex flex-col sm:flex-row gap-4">
                     <a
-                      href="https://wa.me/6285779568555"
+                      href="https://wa.me/6281802344888"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-white px-6 py-3 rounded-full font-medium transition-all shadow-md hover:shadow-lg"

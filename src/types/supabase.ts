@@ -13,6 +13,13 @@ export interface Service {
   created_at: string;
   updated_at: string;
 }
+export interface ProjectImage {
+  id: string;
+  portfolio_id: string;
+  image_url: string;
+  sort_order: number;
+  created_at: string;
+}
 
 export interface Portfolio {
   id: string;
@@ -27,6 +34,7 @@ export interface Portfolio {
   is_featured: boolean;
   created_at: string;
   updated_at: string;
+  project_images?: ProjectImage[];
 }
 
 export interface TeamMember {

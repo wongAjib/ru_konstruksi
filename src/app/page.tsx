@@ -18,7 +18,7 @@ export default async function Home() {
     { data: testimonials },
   ] = await Promise.all([
     supabase.from("services").select("*").order("created_at", { ascending: true }),
-    supabase.from("portfolios").select("*").eq("is_featured", true).limit(6),
+    supabase.from("portfolios").select("*, project_images(*)").eq("is_featured", true).limit(6),
     supabase.from("teams").select("*").order("sort_order", { ascending: true }),
     supabase.from("testimonials").select("*").eq("is_featured", true),
   ]);

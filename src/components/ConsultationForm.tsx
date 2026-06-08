@@ -38,7 +38,7 @@ export default function ConsultationForm() {
 *Pesan:* ${formData.message}`;
       
       const encodedText = encodeURIComponent(text);
-      const waUrl = `https://wa.me/6285779568555?text=${encodedText}`;
+      const waUrl = `https://wa.me/6281802344888?text=${encodedText}`;
       
       // Open WhatsApp in new tab
       window.open(waUrl, '_blank');

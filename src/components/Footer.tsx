@@ -17,6 +17,13 @@ export default function Footer() {
               Raffi Utama Konstruksi menghadirkan solusi konstruksi modern, profesional, dan terpercaya untuk mewujudkan bangunan impian Anda dengan standar kualitas tertinggi.
             </p>
             <div className="flex space-x-4">
+              <a href="https://www.instagram.com/rukonstruksi.bogor?igsh=bDJyYzg0amd3bXlz" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#1A1A1A] flex items-center justify-center hover:bg-accent hover:text-white transition-colors">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
               <a href="#" className="w-10 h-10 rounded-full bg-[#1A1A1A] flex items-center justify-center hover:bg-accent hover:text-white transition-colors">
                 <MessageCircle size={18} />
               </a>
@@ -60,7 +67,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-accent shrink-0" />
-                <span className="text-slate-400">+62 857 7956 8555 </span>
+                <span className="text-slate-400">+62 818-0234-4888 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-accent shrink-0" />

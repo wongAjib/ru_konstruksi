@@ -11,7 +11,7 @@ export default function Logo({ className = "", variant = "dark" }: LogoProps) {
       <img 
         src="/logo.jpg" 
         alt="RU Konstruksi" 
-        className="w-48 md:w-37 h-auto object-contain rounded-sm"
+        className="w-auto max-h-10 md:max-h-12 object-contain rounded-sm"
       />
     </div>
   );

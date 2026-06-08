@@ -44,3 +44,35 @@ export async function savePortfolio(formData: FormData) {
   revalidatePath('/')
   redirect('/management/portfolios')
 }
+
+export async function addProjectImages(portfolioId: string, urls: string[]) {
+  const supabase = await createClient()
+  const inserts = urls.map((url, index) => ({
+    portfolio_id: portfolioId,
+    image_url: url,
+    sort_order: index,
+  }))
+  await supabase.from('project_images').insert(inserts)
+  revalidatePath(`/management/portfolios/${portfolioId}`)
+  revalidatePath('/gallery')
+  revalidatePath('/')
+}
+
+export async function deleteProjectImage(imageId: string, portfolioId: string) {
+  const supabase = await createClient()
+  await supabase.from('project_images').delete().eq('id', imageId)
+  revalidatePath(`/management/portfolios/${portfolioId}`)
+  revalidatePath('/gallery')
+  revalidatePath('/')
+}
+
+export async function updateProjectImageOrder(images: { id: string; sort_order: number }[], portfolioId: string) {
+  const supabase = await createClient()
+  for (const img of images) {
+    await supabase.from('project_images').update({ sort_order: img.sort_order }).eq('id', img.id)
+  }
+  revalidatePath(`/management/portfolios/${portfolioId}`)
+  revalidatePath('/gallery')
+  revalidatePath('/')
+}
+
