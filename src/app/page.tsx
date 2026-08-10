@@ -1,5 +1,4 @@
 import HeroSection from "@/components/HeroSection";
-import CompanyHighlights from "@/components/CompanyHighlights";
 import ServicesPreview from "@/components/ServicesPreview";
 import PortfolioPreview from "@/components/PortfolioPreview";
 import TeamSection from "@/components/TeamSection";
@@ -26,7 +25,6 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
-      <CompanyHighlights />
       <ServicesPreview services={services || []} />
       <PortfolioPreview portfolios={portfolios || []} />
       <TeamSection team={teams || []} />

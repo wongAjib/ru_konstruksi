@@ -27,18 +27,14 @@ export default function Navbar() {
 
   return (
   <nav
-  className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[95%] max-w-7xl rounded-2xl ${
+  className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[95%] md:w-max rounded-2xl ${
     isScrolled
       ? "bg-[#111111]/65 backdrop-blur-xl border border-white/10 shadow-2xl py-2.5 md:py-3"
       : "bg-[#111111]/45 backdrop-blur-xl border border-white/5 py-3 md:py-4"
   }`}
 >
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="group">
-            <Logo variant={isScrolled ? "dark" : "light"} />
-          </Link>
-
+      <div className="mx-auto px-4 md:px-6 lg:px-8 w-full md:w-max">
+        <div className="flex items-center justify-center relative">
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
@@ -64,7 +60,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden p-2 rounded-md transition-colors ${
+            className={`md:hidden absolute right-0 p-2 rounded-md transition-colors ${
               isScrolled ? "text-slate-900" : "text-white"
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

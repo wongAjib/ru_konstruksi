@@ -10,7 +10,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-slate-900/75 z-10" />
         <img
-          src="/hero-bg.png"
+          src="/hero-bg-v2.png"
           alt="Modern Construction"
           className="w-full h-full object-cover object-center"
         />
